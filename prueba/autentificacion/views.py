@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 
 # Create your views here.
 # autenticacion/views.py
@@ -8,6 +9,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import CustomUserSerializer
+from django.contrib.auth import authenticate
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -38,3 +40,8 @@ def inicio_sesion(request):
         }, status=status.HTTP_200_OK)
     else:
         return Response({'error': 'Credenciales inválidas'}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+def test_cors(request):
+    response = JsonResponse({'message': 'CORS test successful'})
+    return response
