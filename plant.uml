@@ -1,0 +1,60 @@
+@startuml
+package "Models" {
+    [User]
+    [Post]
+    [CustomUser]
+}
+
+package "Manager" {
+    [CustomUserManager]
+}
+
+package "Views" {
+    [get_weather]
+    [datos_ficticios]
+    [test_cors]
+    [inicio_sesion]
+    [registro]
+}
+
+package "URLs" {
+    [weather/] --> [get_weather]
+    [test-cors/] --> [test_cors]
+    [datos-ficticios/] --> [datos_ficticios]
+    [api/registro/] --> [registro]
+    [api/inicio_sesion/] --> [inicio_sesion]
+}
+
+package "Middleware" {
+    [AuthenticationMiddleware]
+    [CorsMiddleware]
+}
+
+database "Database" {
+    [User]
+    [Post]
+    [CustomUser]
+}
+
+package "Settings" {
+    [DATABASES]
+    [INSTALLED_APPS]
+}
+
+[CustomUser] --|> [AbstractBaseUser]
+[CustomUser] --> [BaseUserManager]
+[CustomUserManager] ..|> [BaseUserManager]
+
+[get_weather] --> [HttpResponse]
+[get_weather] --> [JsonResponse]
+[datos_ficticios] --> [JsonResponse]
+[test_cors] --> [JsonResponse]
+[inicio_sesion] --> [HttpResponse]
+[registro] --> [HttpResponse]
+
+[URLs] --> [Views]
+[Views] --> [Models]
+[Views] --> [Middleware]
+[Views] --> [Database]
+[Database] --> [Models]
+@enduml
