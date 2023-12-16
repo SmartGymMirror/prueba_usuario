@@ -156,6 +156,7 @@ DJOSER={
         'user_delete':'djoser.serializers.UserDeleteSerializer',
     }
 }
+AUTH_USER_MODEL='autentificacion.UserAccount'
 
 
 # Default primary key field type
@@ -169,4 +170,3 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOWED_CREDENTIALS = True
-AUTH_USSER_MODEL='autenticacion.UserAccount'
