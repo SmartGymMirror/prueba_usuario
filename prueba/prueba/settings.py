@@ -129,15 +129,17 @@ STATICFILES_DIRS=[
 
 STATIC_ROOT=os.path.join(BASE_DIR,'static')
 
-REST_FRAMEWORK={
-    'DEFAULT_AUTHENTIFICATION_CLASSES':(
-        'rest_framework.authentication.TokenAuthentication',
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',  
     ),
 }
+
 
 SIMPLE_JWT={
     'AUTH_HEADER_TYPES':('JWT',),
 }
+
 
 DJOSER={
     'LOGIN_FIELD':'email', #para que nos permita iniciar sesion con el email
@@ -158,6 +160,7 @@ DJOSER={
 }
 
 AUTH_USER_MODEL='autentificacion.UserAccount'
+
 
 
 # Default primary key field type
